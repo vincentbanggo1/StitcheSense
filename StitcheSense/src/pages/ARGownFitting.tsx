@@ -12,9 +12,11 @@ interface ARGownFittingProps {
 }
 
 const ARGownFitting: React.FC<ARGownFittingProps> = ({ 
-  gownModel, 
+  gownModel, // TODO: Use this for 3D model selection
   userMeasurements 
 }) => {
+  // Prevent unused variable warning
+  console.log('Gown model selected:', gownModel);
   const [isARActive, setIsARActive] = useState(false);
   const [cameraStream, setCameraStream] = useState<MediaStream | null>(null);
   const [measurements, setMeasurements] = useState(userMeasurements);

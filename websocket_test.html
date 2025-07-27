@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Test</title>
+</head>
+<body>
+    <h1>WebSocket Connection Test</h1>
+    <div id="status">Disconnected</div>
+    <button onclick="connect()">Connect</button>
+    <button onclick="disconnect()">Disconnect</button>
+    <div id="messages"></div>
+
+    <script>
+        let ws = null;
+        const status = document.getElementById('status');
+        const messages = document.getElementById('messages');
+
+        function connect() {
+            // Test WebSocket connection
+            const wsUrl = 'ws://localhost:8000/api/measurements/realtime/test-user-123';
+            console.log('Connecting to:', wsUrl);
+            
+            ws = new WebSocket(wsUrl);
+
+            ws.onopen = function(event) {
+                console.log('WebSocket connected');
+                status.textContent = 'Connected';
+                status.style.color = 'green';
+            };
+
+            ws.onmessage = function(event) {
+                console.log('Message received:', event.data);
+                const msgDiv = document.createElement('div');
+                msgDiv.textContent = 'Received: ' + event.data;
+                messages.appendChild(msgDiv);
+            };
+
+            ws.onclose = function(event) {
+                console.log('WebSocket disconnected');
+                status.textContent = 'Disconnected';
+                status.style.color = 'red';
+            };
+
+            ws.onerror = function(error) {
+                console.error('WebSocket error:', error);
+                status.textContent = 'Error: ' + error;
+                status.style.color = 'red';
+            };
+        }
+
+        function disconnect() {
+            if (ws) {
+                ws.close();
+                ws = null;
+            }
+        }
+    </script>
+</body>
+</html>

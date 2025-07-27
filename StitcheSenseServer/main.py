@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 from app.core.config import settings
 from app.core.database import connect_to_mongo, close_mongo_connection
-from app.api import auth, products, admin
+from app.api import auth, products, admin, measurements
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -45,6 +45,7 @@ app.mount("/api/static", StaticFiles(directory="static"), name="static")
 app.include_router(auth.router, prefix="/api/auth", tags=["authentication"])
 app.include_router(products.router, prefix="/api/products", tags=["products"])
 app.include_router(admin.router, prefix="/api/admin", tags=["admin"])
+app.include_router(measurements.router, prefix="/api/measurements", tags=["measurements"])
 
 @app.get("/")
 async def root():
