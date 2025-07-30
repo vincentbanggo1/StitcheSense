@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 from app.core.config import settings
 from app.core.database import connect_to_mongo, close_mongo_connection
-from app.api import auth, products, admin, measurements
+from app.api import auth, products, admin, measurements, ar_augmentation
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -46,6 +46,7 @@ app.include_router(auth.router, prefix="/api/auth", tags=["authentication"])
 app.include_router(products.router, prefix="/api/products", tags=["products"])
 app.include_router(admin.router, prefix="/api/admin", tags=["admin"])
 app.include_router(measurements.router, prefix="/api/measurements", tags=["measurements"])
+app.include_router(ar_augmentation.router, prefix="/api/ar", tags=["ar-augmentation"])
 
 @app.get("/")
 async def root():
@@ -64,8 +65,6 @@ async def api_health_check():
     return {"status": "API is running", "version": "1.0.0"}
 
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
     import uvicorn
     uvicorn.run(
         "main:app",

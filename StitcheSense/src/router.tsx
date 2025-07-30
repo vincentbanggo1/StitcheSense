@@ -10,6 +10,7 @@ import ModernGowns from "./pages/ModernGowns";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminProductManager from "./pages/AdminProductManager";
 import AIBodyMeasurement from "./pages/AIBodyMeasurement";
+import ARGownFitting from "./pages/ARGownFitting";
 
 export const router = createBrowserRouter([
   {
@@ -56,4 +57,9 @@ export const router = createBrowserRouter([
     path: "/ai-measurement",
     element: <AIBodyMeasurement />,
   },
+  {
+    path: "/ar-gown-fitting",
+    element: <ARGownFitting />,
+  },
+  
 ]);
