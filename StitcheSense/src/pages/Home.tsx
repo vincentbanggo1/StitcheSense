@@ -7,6 +7,8 @@ import heroImage from "../assets/Gown-imgs/images/image.png";
 import galleryImage1 from "../assets/Gown-imgs/images/image1.png";
 import galleryImage2 from "../assets/Gown-imgs/images/image2.png";
 import galleryImage3 from "../assets/Gown-imgs/images/image3.png";
+import galleryImage4 from "../assets/Gown-imgs/images/image 4.png";
+import galleryImage5 from "../assets/Gown-imgs/images/image 5.png";
 
 function Home() {
   const { featuredProducts, loading } = useProducts();
@@ -53,7 +55,6 @@ function Home() {
               src={galleryImage1} 
               alt="Gown Style 1" 
             />
-            <h3 className="text-lg font-semibold">Classic Elegance</h3>
           </div>
           <div className="flex flex-col items-center">
             <img 
@@ -61,7 +62,6 @@ function Home() {
               src={galleryImage2} 
               alt="Gown Style 2" 
             />
-            <h3 className="text-lg font-semibold">Modern Romance</h3>
           </div>
           <div className="flex flex-col items-center">
             <img 
@@ -69,7 +69,20 @@ function Home() {
               src={galleryImage3} 
               alt="Gown Style 3" 
             />
-            <h3 className="text-lg font-semibold">Timeless Beauty</h3>
+          </div>
+           <div className="flex flex-col items-center">
+            <img 
+              className="rounded-lg h-[500px] w-[340px] object-cover mb-4" 
+              src={galleryImage4} 
+              alt="Gown Style 4" 
+            />
+          </div>
+          <div className="flex flex-col items-center">
+            <img 
+              className="rounded-lg h-[500px] w-[340px] object-cover mb-4" 
+              src={galleryImage5} 
+              alt="Gown Style 5" 
+            />
           </div>
         </div>
 
